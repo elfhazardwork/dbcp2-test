@@ -13,10 +13,10 @@ parallel deploy process is simply below.
 2. autoDeploy is true
 3. undeployOldVersions is true
 4. webapp##01.war is deployed.
----
+- - -
 // when
 5. webapp##02.war copy into webapps
----
+- - -
 // then
 6. webapp##02 is deploy.
 7. webapp##01 is undeployed.
