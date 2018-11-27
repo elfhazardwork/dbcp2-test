@@ -8,16 +8,16 @@ It is Tomcat's bug.
 
 parallel deploy process is simply below.
 
-// given
+### given
 1. Tomcat is 7.0 or above
 2. autoDeploy is true
 3. undeployOldVersions is true
 4. webapp##01.war is deployed.
-- - -
-// when
+
+### when
 5. webapp##02.war copy into webapps
-- - -
-// then
+
+### then
 6. webapp##02 is deploy.
 7. webapp##01 is undeployed.
 8. webapp##01.war is deleted.
