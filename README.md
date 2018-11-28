@@ -30,3 +30,25 @@ In my test, Tomcat says [like this](./catalina.out.log).
 
 So, manager UI shows to us like below after parallel deploy,
 ![manager_20181127151507.jpg](./manager_20181127151507.jpg)
+
+## 2018-11-28
+I found work around for this problem.
+
+Answer is Spring's MBeanExporter. Like this:
+<pre><code>
+@Configuration
+public class MXBeanConfig {
+    @Bean
+    public AnnotationMBeanExporter annotationMBeanExporter() {
+        AnnotationMBeanExporter annotationMBeanExporter = new AnnotationMBeanExporter();
+        annotationMBeanExporter.setRegistrationPolicy(RegistrationPolicy.REPLACE_EXISTING); // or IGNORE_EXISTING
+        return annotationMBeanExporter;
+    }
+}
+</code></pre>
+
+However, this method has limitations.
+
+One Tomcat, One app.
+
+If there is an MBean with the same name between different webapps, both Mbean's may be twisted.
